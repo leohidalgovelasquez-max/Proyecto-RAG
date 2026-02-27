@@ -1,0 +1,205 @@
+MANUAL TÉCNICO DE MOTORES INDUSTRIALES SIEMENS
+=================================================
+
+SECCIÓN 1: MOTORES DE INDUCCIÓN TRIFÁSICOS SERIE SIMOTICS
+----------------------------------------------------------
+
+1.1 Especificaciones Técnicas
+- Modelo: SIMOTICS SD 1LA7
+- Potencia: 5-50 kW
+- Tensión: 400V AC trifásico
+- Frecuencia: 50 Hz
+- Velocidad: 1500 RPM (4 polos)
+- Factor de servicio: 1.15
+- Clase de aislamiento: F
+- Protección: IP55
+
+1.2 Parámetros de Operación Normal
+- Temperatura de trabajo: 20-85°C (máximo 105°C en bobinados)
+- Vibración máxima: 5.0 mm/s (según ISO 10816)
+- Consumo nominal: Ver placa de características
+- Factor de potencia: 0.85-0.95 a plena carga
+- Rendimiento: 92-95%
+
+1.3 Límites de Alarma
+- Temperatura motor: 70°C预警, 85°C alarma
+- Vibración: 3.0 mm/s预警, 5.0 mm/s alarma
+- Corriente: 110% nominal预警, 125% alarma
+
+1.4 Códigos de Error del PLC (Step 7)
+- 0x01: Fallo de alimentación - Verificar protecciones
+- 0x02: Sobrecarga térmica - Verificar cooling
+- 0x03: Fallo de tierra - Medir aislamiento
+- 0x04: Problema de fase - Revisar relé K1
+- 0x05: Fallo en encoder - Verificar conexiones
+- 0x06: Temperatura excesiva - Refrigeración
+- 0x07: Vibración elevada - Rodamientos
+- 0x08: Timeout comunicación - Revisar bus
+
+SECCIÓN 2: SISTEMA DE REFRIGERACIÓN IC411
+-------------------------------------------
+
+2.1 Componentes del Sistema
+- Ventilador axial IC411 (integrado)
+- Relé de cooling K1 (Siemens 3RH2121)
+- Sensor de temperatura PT100 (4-20mA)
+- Termostato de protección (bimetal 90°C)
+- Filtro de aire (limpiar mensualmente)
+
+2.2 Mantenimiento Preventivo
+- Limpieza de aletas: Mensual
+- Verificación de ventilador: Semanal
+- Cambio de filtro: Trimestral
+- Inspección de relé K1: Trimestral
+- Calibración PT100: Anual
+
+2.3 Troubleshooting Temperatura
+- Temp > 85°C: Verificar refrigeración forzada
+- Temp > 95°C: Detener inmediatamente
+- Código 0x04: Revisar relé K1, verificar fases
+- Solución típica: Cambio de relé K1 (30 min)
+
+2.4 Piezas de Repuesto
+- Relé K1: 3RH2121-1AP00
+- Sensor PT100: 3RN1011-1CB00
+- Ventilador: 1LA7070-4AB10
+- Termostato: 3RN1012-1AB00
+
+SECCIÓN 3: ANÁLISIS DE VIBRACIONES
+-----------------------------------
+
+3.1 Estándares Aplicables
+- ISO 10816-1: Evaluación de vibraciones
+- ISO 20816-3: Máquinas rotativas
+- VDI 2056: Evaluación de vibraciones
+
+3.2 Límites de Vibración (mm/s)
+- Zona A: < 2.5 - Nuevo equipo
+- Zona B: 2.5-5.0 - Aceptable
+- Zona C: 5.0-7.0 - Advertencia
+- Zona D: > 7.0 - Crítico - Detener
+
+3.3 Causas Comunes de Vibración
+- Desalineación (< 0.05mm)
+- Desequilibrio dinámico
+- Rodamientos defectuosos (vida útil 20,000h)
+- Resonancia estructural
+- Holgura en sujeciones
+- Problemas eléctricos (armonicos)
+
+3.4 Análisis Espectral
+- Frecuencia de rodamiento: 4.2 kHz (defecto)
+- Desbalanceo: 1x RPM (50 Hz)
+- Desalineación: 2x RPM (100 Hz)
+- Resonancia: Frecuencia natural
+
+3.5 Procedimiento de Análisis
+1. Medir en 3 ejes (horizontal, vertical, axial)
+2. Comparar con línea base
+3. Analizar espectro de frecuencias
+4. Identificar componente defectuoso
+5. Programar reparación
+
+SECCIÓN 4: ACTUADORES LINEALES
+-------------------------------
+
+4.1 Especificaciones
+- Modelo: SIEMENS 3SU1400
+- Fuerza: 1000 N
+- Carrera: 300 mm
+- Ciclos máximos: 10000 (diseño)
+- Velocidad: 10 mm/s
+- Tensión: 24V DC
+
+4.2 Mantenimiento
+- Lubricación: Cada 5000 ciclos (gras SKF)
+- Inspección de juntas: Cada 2000 ciclos
+- Reemplazo recomendado: 8000 ciclos
+- Verificar final de carrera: Mensual
+
+4.3 Problemas Comunes
+- Fugas hidráulicas: Reemplazar juntas
+- Ruido excesivo: Lubricar o reemplazar
+- Fallo de final de carrera: Ajustar finales de carrera
+- Ciclos elevados: Programar reemplazo
+
+SECCIÓN 5: PROCEDIMIENTOS DE SEGURIDAD
+---------------------------------------
+
+5.1 Lockout/Tagout (LOTO) - Norma OSHA 1910.147
+1. Notificar al personal afectado
+2. Desenergizar equipo
+3. Bloquear interruptor principal (candado)
+4. Verificar ausencia de tensión
+5. Identificar con tag legible
+6. Disipar energías residuales
+7. Confirmar cero energía
+
+5.2 EPP Requerido (Nivel 2)
+- Guantes aislantes clase 2 (1000V)
+- Gafas de seguridad contra partículas
+- Casco de protección (ANSI Z89.1)
+- Calzado de seguridad dielectric
+- Protección auditiva (NRR 25dB)
+- Chaleco reflectante
+
+5.3 Distancias de Seguridad
+- Alta tensión > 1kV: 0.7m mínimo
+- Equipos rotativos: 1.0m mínimo
+- Áreas de trabajo: 1.5m mínimo
+
+5.4 Procedimiento de Emergencia
+1. Presionar botón de PARADA DE EMERGENCIA
+2. Alertar al supervisor y área
+3. No intentar reparación en caliente
+4. Documentar incidente
+5. Investigar causa raíz
+
+SECCIÓN 6: CÓDIGOS DE ERROR DEL PLC S7-1500
+---------------------------------------------
+
+6.1 Errores de Comunicación
+- 0x10: Timeout comunicación OPC-UA
+- 0x11: Error de checksum
+- 0x12: Buffer overflow
+- 0x13: Conexión rechazada
+
+6.2 Errores de Sensores
+- 0x20: Sensor desconectado
+- 0x21: Señal fuera de rango
+- 0x22: Cortocircuito
+- 0x23: Falla de calibración
+
+6.3 Errores de Sistema
+- 0x30: CPU sobrecalentada
+- 0x31: Memoria llena
+- 0x32: Scan time exceeded
+- 0x33: Watchdog timeout
+
+6.4 Procedimientos de Reset
+1. Clear alarms en HMI
+2. Reset PLC (Ctrl+M)
+3. Verificar sensores
+4. Reanudar operación
+5. Documentar evento
+
+SECCIÓN 7: MANTENIMIENTO PREDICTIVO
+------------------------------------
+
+7.1 Indicadores de Condition Monitoring
+- Análisis de vibraciones mensual
+- Termografía trimestral
+- Análisis de aceite (si aplica)
+- Monitorización online de corriente
+
+7.2 Historial de Mantenimiento
+- Registrar todas las intervenciones
+- Documentar piezas cambiadas
+- Registrar tiempos de reparación
+- Analizar tendencias de fallos
+
+7.3 KPIs de Mantenimiento
+- MTBF (Tiempo medio entre fallos): > 8760h
+- MTTR (Tiempo medio de reparación): < 2h
+- Disponibilidad: > 98%
+- Costo mantenimiento: < 2% del valor equipo

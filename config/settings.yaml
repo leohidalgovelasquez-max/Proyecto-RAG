@@ -1,0 +1,60 @@
+# Configuración del Sistema de Monitoreo Industrial con IA
+
+# ============================================
+# CONFIGURACIÓN OPC-UA
+# ============================================
+OPCUA:
+  # Servidor OPC-UA (simulado o real)
+  endpoint: "opc.tcp://localhost:4840"
+  node_id_motor1_temp: "ns=2;i=2"
+  node_id_motor1_vibracion: "ns=2;i=3"
+  node_id_actuador_ciclos: "ns=2;i=4"
+  node_id_motor2_temp: "ns=2;i=5"
+  node_id_motor2_vibracion: "ns=2;i=6"
+  
+  # Intervalo de muestreo (segundos)
+  sampling_interval: 1.0
+
+# ============================================
+# RANGOS NORMALES DE OPERACIÓN
+# ============================================
+THRESHOLDS:
+  motor:
+    temperatura_min: 20
+    temperatura_max: 85
+    vibracion_max: 5.0
+  actuador:
+    ciclos_max: 10000
+    ciclos_warning: 8000
+
+# ============================================
+# CONFIGURACIÓN DEL AGENTE RAG
+# ============================================
+RAG:
+  # Modelo de embeddings
+  embeddings_model: "sentence-transformers/all-MiniLM-L6-v2"
+  
+  # Rutas de datos
+  manuales_path: "data/manuales"
+  historico_path: "data/historico"
+  
+  # Configuración de ChromaDB
+  chroma_persist_directory: "chroma_db"
+  
+  # Número de documentos a recuperar
+  k_retrieved_docs: 5
+
+# ============================================
+# CONFIGURACIÓN DE LA INTERFAZ
+# ============================================
+DASHBOARD:
+  title: "Sistema de Monitoreo Industrial - IA Experto de Guardia"
+  page_icon: "🏭"
+  layout: "wide"
+  
+# ============================================
+# CONFIGURACIÓN DE OPENAI (para producción)
+# ============================================
+OPENAI:
+  api_key: "${OPENAI_API_KEY}"
+  model: "gpt-3.5-turbo"
